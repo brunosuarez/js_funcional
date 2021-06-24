@@ -64,6 +64,33 @@ function removerSimbolos(simbolos){
     }
 }
 
+function mesclarElemenentos(array){
+    return array.join('')
+}
+
+function separarTextoPor(simbolo) {
+    return function(texto){}
+}
+
+function agruparElementos(palavras){
+    return Object.values(palavras.reduce((acc, palavra) => {
+        const el = palavra.toLowerCase()
+        const qtde = acc[el] ? acc[el].qtde + 1 : 1
+        acc[el] = { elemento: el, qtde }
+        return acc
+    }, {}))
+}
+    
+
+function ordenarPorAtributoNumerico(attr){
+    return function(array){
+        const asc = (o1, o2) => o2[attr] - o1[attr]
+        const desc = (o1, o2) => o2[attr] - o1[attr]
+        return array.sort(ordem === 'asc' ? asc : desc)
+    }
+}
+
+
 module.exports = {
     lerDiretorio,
     lerArquivo,
@@ -72,5 +99,9 @@ module.exports = {
     removerElementosSeVazio,
     removerElementosSeIncluir,
     removerElementosSeApenasNumero,
-    removerSimbolos
+    removerSimbolos,
+    mesclarElemenentos,
+    separarTextoPor, 
+    agruparElementos,
+    ordenarPorAtributoNumerico
 }
